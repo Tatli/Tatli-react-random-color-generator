@@ -18,18 +18,17 @@ export default function App() {
           </li>
           <li>
             Specify <strong>Hue only</strong>: Generate a hex code for a
-            specific <strong>color/hue</strong> and a{' '}
+            specific <strong>color/hue</strong> with a{' '}
             <strong>random lightness</strong>
           </li>
           <li>
             Specify <strong>Lightness only</strong>: Generate a hex code for a
-            specific <strong>lightness</strong> and a{' '}
+            specific <strong>lightness</strong> with a{' '}
             <strong>random color</strong>
           </li>
           <li>
             Specify <strong>Hue & Lightness</strong>: Generate a hex code for a
-            specific <strong>color</strong> and a <strong>lightness</strong>
-            color
+            specific <strong>color</strong> and <strong>lightness</strong>
           </li>
         </ul>
       </fieldset>
