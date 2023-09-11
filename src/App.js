@@ -4,11 +4,11 @@ import { useState } from 'react';
 export default function App() {
   const initialHex = randomColor();
   const [colorHex, setColorHex] = useState(initialHex);
-
+  const [hue, setHue] = useState('');
+  const [lightness, setLightness] = useState('');
   return (
     <>
       <h1>Random color generator</h1>
-
       <fieldset>
         <legend>You can use this form as follows</legend>
         <ul>
@@ -33,56 +33,50 @@ export default function App() {
           </li>
         </ul>
       </fieldset>
-
       <br />
-
-      <label label htmlFor="hue">
-        Hue: <input name="hue" id="hue"></input>
-      </label>
-
+      Hue:{' '}
+      <input
+        value={hue}
+        onChange={(event) => setHue(event.currentTarget.value)}
+      />
       <br />
-
-      <label label htmlFor="lightness">
-        Lightness: <input name="lightness" id="lightness"></input>
-      </label>
-
+      Lightness:{' '}
+      <input
+        value={lightness}
+        onChange={(event) => setLightness(event.currentTarget.value)}
+      />
       <br />
-
       <div style={{ backgroundColor: colorHex }}>
         Generated Color: {colorHex}
       </div>
-
       <br />
-
       {/* If hue and lightness is empty set random color */}
       <button
         onClick={() => {
           // Get values of both input fields
-          const hueInput = document.querySelector('#hue').value;
-          const lightnessInput = document.querySelector('#lightness').value;
 
           // Generate random color depending on what fields are filled
-          if (hueInput && lightnessInput) {
+          if (hue && lightness) {
             setColorHex(
               randomColor({
-                hue: hueInput,
-                lightness: lightnessInput,
+                hue: hue,
+                lightness: lightness,
               }),
             );
             console.log('Inside hue & lightness block');
-          } else if (hueInput) {
+          } else if (hue) {
             setColorHex(
               randomColor({
-                hue: hueInput,
+                hue: hue,
                 lightness: 'random',
               }),
             );
             console.log('Inside hue block');
-          } else if (lightnessInput) {
+          } else if (lightness) {
             setColorHex(
               randomColor({
                 hue: 'random',
-                lightness: lightnessInput,
+                lightness: lightness,
               }),
             );
             console.log('Inside lightness block');
@@ -94,11 +88,8 @@ export default function App() {
       >
         Generate
       </button>
-
       {/* If hue and lightness are specified use those */}
-
       {/* If only hue is specified use that */}
-
       {/* If only lightness is specified use that */}
     </>
   );
